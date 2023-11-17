@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="/static/style.css">
+
+    <title>Kacala Sender</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .form-container {
+            flex: 40%; /* Set the form container to take up 40% of the screen width */
+            max-width: 40%; /* Limit the maximum width to 40% */
+        }
+        .success-container {
+            flex: 1;
+            margin-left: 20px;
+            border: none; /* Remove border */
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.372); /* Add box shadow */
+            min-height: 200px;
+            padding: 10px;
+        }
+        .success-message {
+            background-color: rgb(0, 255, 213);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>The KACALA Sender</h1>
+    <div class="container">
+        <div class="form-container">
+            <form id="emailForm" action="/send-email" method="post" enctype="multipart/form-data">
+                <textarea name="message" rows="4" cols="50" placeholder="Message" required></textarea>
+                <input type="text" name="smtp" placeholder="SMTP Server" required>
+                <input type="number" name="port" placeholder="Port" required>
+                <input type="text" name="senderEmail" placeholder="Sender Email" required>
+                <input type="text" name="senderName" placeholder="Sender Name" required>
+                <input type="password" name="password" placeholder="SMTP Password" required>
+                <input type="text" name="subject" placeholder="Subject" required>
+                <input type="hidden" name="contacts" value="{{ contacts|join('\n') }}">
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+        <div class="success-container">
+            <!-- Flash messages will appear here -->
+            <h2 style="color: white; text-align: center;">Logs & History<br></h2>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="success-message">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+    </div>
+</body>
+</html>

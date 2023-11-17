@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #023d4f; /* Dark Blue Background */
+            color: #fff; /* White Text Color */
+        }
+
+        #landing-page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .moving-words {
+            text-align: center;
+            font-size: 24px;
+            opacity: 0; /* Initially hidden */
+            animation: fadeInOut 6s forwards; /* Fade-in and fade-out animation */
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% {
+                opacity: 0;
+            }
+            20%, 80% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div id="landing-page">
+    <div class="moving-words">
+        <h1>Welcome Kacala...</h1>
+        <p>Thanks For Being Here. Please login</p>
+    </div>
+</div>
+
+<script>
+    setTimeout(function () {
+        document.querySelector('.moving-words').style.animation = 'fadeOut 2s forwards';
+        setTimeout(function () {
+            window.location.href = "/login";
+        }, 500); 
+    }, 6000); 
+</script>
+
+</body>
+</html>
+
+
+
+
+

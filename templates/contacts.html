@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contacts Modification</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #023d4f;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            width: 60%;
+            background-color: rgba(0, 0, 0, 0.271);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            color: #ffffff;
+            font-size: 24px;
+            background: none;
+        }
+        p {
+            color: #fff;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: none;
+            border: none;
+        }
+        input[type="file"],
+        input[type="text"] {
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            border: none; /* Remove border */
+            border-radius: 5px;
+            color: #fff;
+            background: none;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.372); /* Add box shadow */
+        }
+        button {
+            width: 100%;
+            margin: 10px 0;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            background-color: #1d97bc;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #00c3ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Upload and Modify Contacts</h1>
+        <p>Please Upload a file with contacts and add the respective SMS Gateway for the contacts provided. <br>Hit continue to create a message.</p>
+        <form id="contactsForm" action="/modify-contacts" method="post" enctype="multipart/form-data">
+            <input type="file" name="contactsFile" accept=".txt" required>
+            <input type="text" name="smsGateway" placeholder="Carrier SMS Gateway" required>
+            <button type="submit">Modify</button>
+        </form>
+    </div>
+</body>
+</html>
